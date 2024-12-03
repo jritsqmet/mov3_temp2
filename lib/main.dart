@@ -1,3 +1,4 @@
+import 'package:app_03/screens/Pantalla2.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -22,16 +23,28 @@ class Cuerpo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ejercicio 03"),
+        title: Text("Ejercicio 03", ),
       ),
-      body: Column(
-        children: [
-          Text("Ejercicio 03"),
-          edad_input(),
-          profesion_input(),
-          calcular_btn(context)
-        ],
-      ),
+      body: Pantalla2()
+      //  Column(
+      //   children: [
+      //     Text("Ejercicio 03", 
+      //     style: TextStyle( fontSize: 35, color: Color.fromRGBO(19, 68, 29, 1) ) , 
+      //     ),
+      //     Padding(
+      //       padding: const EdgeInsets.all(18.0),
+      //       child: edad_input(),
+      //     ),
+      //     Padding(
+      //       padding: const EdgeInsets.all(18.0),
+      //       child: profesion_input(),
+      //     ),
+      //     calcular_btn(context),
+
+      //     imagenURL(),
+      //     imagenLocal()
+      //   ],
+      // ),
     );
   }
 }
@@ -40,6 +53,10 @@ TextEditingController edad = TextEditingController();
 Widget edad_input (){
   return TextField(
     controller: edad,
+    decoration: InputDecoration(
+      label: Text("Ingresar edad", style: TextStyle( fontSize: 25),),
+      border: OutlineInputBorder()
+    ),
   );
 }
 
@@ -47,11 +64,18 @@ TextEditingController profesion = TextEditingController();
 Widget profesion_input(){
   return TextField(
     controller:  profesion,
+    decoration: InputDecoration(
+      label: Text("Ingresar Profesión", style: TextStyle(fontSize: 25),),
+      border: OutlineInputBorder()
+    ),
   );
 }
 
 Widget calcular_btn(context){
-  return FilledButton(onPressed: ()=>calcularSalario(context), child: Text("Calcular"));
+  return FilledButton(onPressed: ()=>calcularSalario(context),
+   child: Text("Calcular", style: TextStyle(fontSize: 30),),
+   style: ButtonStyle( backgroundColor: WidgetStatePropertyAll(const Color.fromARGB(255, 20, 173, 25)) ),
+   );
 }
 
 //ALERT
@@ -83,4 +107,16 @@ double salario (){
   }
 
   return salario;
+}
+
+//IMAGEN EXTERNA
+Widget imagenURL(){
+  return Image.network("https://4kwallpapers.com/images/walls/thumbs_3t/19846.png",
+  width: 300,
+  );
+}
+
+//IMAGEN LOCAL
+Widget imagenLocal(){
+  return Image.asset("assets/images/ima.jpg");
 }
